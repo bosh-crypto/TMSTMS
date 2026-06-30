@@ -38,7 +38,6 @@ if (!fs.existsSync(privateKeyPath) || !fs.existsSync(publicKeyPath)) {
         return;
       }
       console.log(`Private key saved to '${privateKeyPath}'.`);
-      
     });
 
     // Write the public key to a file
@@ -59,4 +58,12 @@ if (!fs.existsSync(privateKeyPath) || !fs.existsSync(publicKeyPath)) {
 }
 require("./route/router")(app);
 
-app.listen(PORT, () => console.log(`Example app listening on port !`, PORT));
+const server = app.listen(PORT, () =>
+  console.log(`Example app listening on port !`, PORT)
+);
+
+// Increase timeouts to accommodate slow/fragmented sends from GSM/cellular modems
+server.requestTimeout = 300000;   // 5 min — max time to receive full request
+server.headersTimeout = 300000;   // 5 min — max time to receive headers
+server.timeout = 300000;          // overall socket inactivity timeout
+server.keepAliveTimeout = 65000;  // slightly above default, helps slow/keep-alive clients
