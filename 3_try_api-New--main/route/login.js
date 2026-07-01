@@ -72,6 +72,11 @@ router.post("/signUp", async (req, res) => {
   }
 });
 
+
+router.get("/test", (req, res) => {
+  res.status(200).json({ message: "API is working!" });
+});
+
 // ---------------------------------------------------------
 // ROUTE 2: HARDWARE LOGIN (Generates the VIP Pass)
 // ---------------------------------------------------------
