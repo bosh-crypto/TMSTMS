@@ -4,8 +4,8 @@ require("dotenv").config();
 const rsa = require("node-rsa");
 const fs = require("fs");
 
-const privateKey = fs.readFileSync("./key/private.pem", "utf-8");
-let key_private = new rsa(privateKey);
+// const privateKey = fs.readFileSync("./key/private.pem", "utf-8");
+// let key_private = new rsa(privateKey);
 
 module.exports.isAuth = async (req, res, next) => {
   try {
