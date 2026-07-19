@@ -141,6 +141,11 @@ router.post("/login", async (req, res) => {
       process.env.JWT_SECRET_KEY, // Ensure this matches EMQX exactly
       { expiresIn: "24h" }
     );
+    // const token = jwt.sign(
+    //   { clientId: "12345678915" },
+    //   "mysecret123",  // paste your actual secret here
+    //   { expiresIn: "24h" }
+    // );
 
     console.log(`[TMS] Authentication Success. JWT issued for ${soundboximei}`);
 
